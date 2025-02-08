@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/master.xml
+
+---
+spring:
+  profiles:
+    group:
+      dev: h2
+

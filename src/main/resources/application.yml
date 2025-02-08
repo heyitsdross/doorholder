@@ -5,9 +5,35 @@ spring:
     enabled: true
     change-log: classpath:/db/changelog/master.xml
 
+server:
+  port: 27828
+
+---
+spring:
+  config:
+    activate:
+      on-profile: h2
+  datasource:
+    driver-class-name: org.h2.Driver
+    hikari:
+      auto-commit: true
+      jdbc-url: jdbc:h2:mem:doorholder
+      username: sa
+      password:
+
+  jpa:
+    open-in-view: false
+---
+spring:
+  config:
+    activate:
+      on-profile: h2-console
+  h2:
+    console:
+      enabled: true
 ---
 spring:
   profiles:
     group:
-      dev: h2
+      dev: h2, h2-console
 
